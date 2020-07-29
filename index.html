@@ -4,14 +4,75 @@
 <head>
     <title>Rock, Paper, Scissors</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <div class = "header">
+        <h1> Let's Play a Game</h1>
+        <p> Select Rock, Paper, or Scissors below to play against the master computer:</p>
+    </div>
+
+    <div class = "scoreboard">
+        <div class="score">
+            Player Score: 0
+        </div>  
+        <div class="score2">
+            Computer Score: 0
+        </div>
+    </div>
+
+    <div class = "button-house">
+        <button id = "rock"> Rock </button>
+        <button id = "paper"> Paper</button>
+        <button id = "scissors">Scissors</button>
+    </div>
+
+    <div>
+        <P class> Game Log:</P>
+        <ul class = results> 
+
+        </ul>
+    </div>
+
     <script>
 
+        // Sets the scores to zero to be iterated on each round
         let playerScore = 0;
         let computerScore = 0;
 
+        // Grabs the score and results divs to be manipulated after each round
+        let results = document.querySelector(".results");
+        let playerScores = document.querySelector(".score");
+        let computerScores = document.querySelector(".score2");
+        
+        // Creates event triggers on each of the three buttons and plays a round of RPS with the appropriate player selection
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.addEventListener('click', function() {
+                results.textContent += (playRound(button.id, computerPlay()) + " ||| ");
+                playerScores.textContent = `Player Score: ${playerScore}`;
+                computerScores.textContent = `Computer Score: ${computerScore}`;
+                alertWinner();           
+           });
+        });
+
+        // Alerts the winner when score reaches 5 and resets scores
+        function alertWinner() {
+            if (computerScore === 5) {
+                alert("Computer Wins, play again.")
+                computerScore = 0;
+                playerScore = 0;
+            }
+            if (playerScore === 5) {
+                alert("You Win, congrats.")
+                playerScore = 0;
+                computerScore = 0;
+            }            
+        };
+
+        // Creates the computer's selection for a round
         function computerPlay() {
             randomNumber = Math.floor(Math.random() * 12);
             if (randomNumber <= 3)
@@ -20,11 +81,10 @@
                 return ("Paper");
             else
                 return ("Scissors");
-        }
+        };
 
+        // Plays a round of RPS
         function playRound(playerSelection, computerSelection) {
-
-
             if (playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors") {
                 playerScore++;
                 return ("You Win! Rock Beats Scissors Everytime");
@@ -34,14 +94,14 @@
                 return ("You Lose! Paper Beats Rock Everytime");
             }
             else if (playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "rock") {
-                return ("It's a tie, Rock and Rock be chilling.");
+                return ("It's a Tie, Rock and Rock be chilling.");
             }
             else if (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "scissors") {
-                return ("It's a tie, Scissor and Scissors be chillin");
+                return ("It's a Tie, Scissor and Scissors be chilling.");
             }
             else if (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "paper") {
                 playerScore++;
-                return ("You Win! Scissors Beats Paper Everytime");
+                return ("You Win! Scissors Beats Paper Everytime.");
             }
             else if (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock") {
                 computerScore++;
@@ -49,40 +109,19 @@
             }
             else if (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "scissors") {
                 computerScore++;
-                return ("You Lose! Scissors Beat Paper Everytime");
+                return ("You Lose! Scissors Beat Paper Everytime.");
             }
             else if (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "paper") {
-                return ("It's a tie, Paper and Paper be chillin");
+                return ("It's a Tie, Paper and Paper be chilling.");
             }
             else if (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock") {
-            playerScore++;
-            return ("You Win! Paper beats Rock everytime.")
+                playerScore++;
+                return ("You Win! Paper Beats Rock Everytime.")
             }
             else 
-            computerScore++;
-            return ("It seems like you entered a bad value, point goes to computer.")
+                computerScore++;
+                return ("It seems like you entered a bad value, point goes to computer.")
         }
-
-        function game() {
-
-            for (var i = 0; i < 5; i++) {
-                let computerSelection = (computerPlay());
-                let playerSelection = prompt("rock, paper or scissors?");
-                console.log(playRound(playerSelection, computerSelection));
-            }
-
-            let results = `Final Score: Player Score: ${playerScore} , Computer Score: ${computerScore}`;
-        
-            if (playerScore == computerScore) {
-                console.log("Final Score: It's a tie.") }
-            else
-                console.log(results);
-
-            playerScore = 0;
-            computerScore = 0;
-        }
-
-
     </script>
 </body>
 

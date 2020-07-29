@@ -1,0 +1,76 @@
+body {
+    background-color: whitesmoke;
+}
+
+.header {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    margin: 100px; 
+    border: solid; 
+    border-radius: 5px;
+    border-right-width: 7px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-color: gray; 
+    border-bottom-width: 7px; 
+    border-bottom-color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-house {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    justify-content: center;  
+    margin-bottom: 50px;   
+}
+
+button {
+   border-radius: 2px;
+   border: solid;
+   border-width: 1px;
+   font-family: Arial, Helvetica, sans-serif;
+   padding-left: 20px;
+   padding-right: 20px;
+   margin-right: 25px;
+   margin-left: 25px;
+   border-right-width: 5px; 
+   border-bottom-width: 5px; 
+   border-right-color: gray;
+   border-bottom-color: gray; 
+   font-size: 25px;
+   height: 50px;
+
+}
+
+.scoreboard {
+    display: flex; 
+    justify-content: space-between; 
+    margin-right: 700px;
+    margin-left: 700px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    border: solid;
+    border-width: 1px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    padding: 10px 10px 10px 10px;
+    border-right-color: gray;
+    border-bottom-color: gray; 
+}
+
+.rock-button {
+    color:red;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+}
+
+.paper-button {
+    color:blue;
+}
+
